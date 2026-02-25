@@ -13,7 +13,6 @@ Cross-Domain Attacks (CDA) introduce a new exploitation paradigm for hypervisors
 | **Organization** | Hangzhou Dianzi University; Zhejiang University; EPFL        |
 | **Published at** | Network and Distributed System Security Symposium (NDSS 2026) |
 | **Paper**        | https://www.arxiv.org/pdf/2512.04260                         |
-|                  |                                                              |
 
 # Overview
 
