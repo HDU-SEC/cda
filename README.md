@@ -19,7 +19,7 @@ Cross-Domain Attacks (CDA) introduce a new exploitation paradigm for hypervisors
 Our artefacts are structured as follows:
 
 
-- **[Gadget Identification](https://github.com/HDU-SEC/cda/tree/main/step3-seed2poc)**:  
+- **[Gadget Identification](https://github.com/HDU-SEC/cda/tree/main/step1-qemu-codeQLForGadget)**:  
   CodeQL-based static analysis for discovering cross-domain gadgets, as described in §5 of our paper.
 
 - **[Gadget Triggering (Fuzzing)](https://github.com/HDU-SEC/cda/tree/main/step2-fuzzforseedfile)**:  
