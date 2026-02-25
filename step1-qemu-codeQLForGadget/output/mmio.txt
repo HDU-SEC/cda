@@ -1,0 +1,1950 @@
+path 0 ：
+smmu_write_mmio -> smmu_writel -> smmuv3_cmdq_consume -> queue_read -> dma_memory_read
+
+path 1 ：
+smmu_write_mmio -> smmu_writel -> smmuv3_cmdq_consume -> smmuv3_range_inval -> smmuv3_inv_notifiers_iova -> smmuv3_notify_iova -> smmuv3_get_config -> smmuv3_decode_config -> smmu_find_ste -> smmu_get_ste -> dma_memory_read
+
+path 2 ：
+smmu_write_mmio -> smmu_writel -> smmuv3_cmdq_consume -> smmuv3_range_inval -> smmuv3_inv_notifiers_iova -> smmuv3_notify_iova -> smmuv3_get_config -> smmuv3_decode_config -> smmu_find_ste -> dma_memory_read
+
+path 3 ：
+smmu_write_mmio -> smmu_writel -> smmuv3_cmdq_consume -> smmuv3_range_inval -> smmuv3_inv_notifiers_iova -> smmuv3_notify_iova -> smmuv3_get_config -> smmuv3_decode_config -> smmu_get_cd -> dma_memory_read
+
+path 4 ：
+htif_mm_write -> htif_handle_tohost_write -> dma_memory_read
+
+path 5 ：
+pl330_iomem_write -> pl330_exec -> pl330_exec_channel -> pl330_exec_cycle -> dma_memory_write
+
+path 6 ：
+pl330_iomem_write -> pl330_exec -> pl330_exec_channel -> pl330_exec_cycle -> pl330_chan_exec -> pl330_fetch_insn -> dma_memory_read
+
+path 7 ：
+pl330_iomem_write -> pl330_exec -> pl330_exec_channel -> pl330_exec_cycle -> pl330_chan_exec -> pl330_exec_insn -> dma_memory_read
+
+path 8 ：
+pl330_iomem_write -> pl330_exec -> pl330_exec_channel -> pl330_exec_cycle -> dma_memory_read
+
+path 9 ：
+amdvi_mem_ir_write -> amdvi_int_remap_msi -> amdvi_get_dte -> amdvi_log_devtab_error -> amdvi_log_event -> dma_memory_write
+
+path 10 ：
+amdvi_mem_ir_write -> amdvi_int_remap_msi -> amdvi_get_dte -> amdvi_validate_dte -> amdvi_log_illegaldevtab_error -> amdvi_log_event -> dma_memory_write
+
+path 11 ：
+amdvi_mem_ir_write -> amdvi_int_remap_msi -> amdvi_get_dte -> dma_memory_read
+
+path 12 ：
+amdvi_mem_ir_write -> amdvi_int_remap_msi -> __amdvi_int_remap_msi -> amdvi_int_remap_ga -> amdvi_get_irte_ga -> dma_memory_read
+
+path 13 ：
+amdvi_mem_ir_write -> amdvi_int_remap_msi -> __amdvi_int_remap_msi -> amdvi_int_remap_legacy -> amdvi_get_irte -> dma_memory_read
+
+path 14 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_log_command_error -> amdvi_log_event -> dma_memory_write
+
+path 15 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_completion_wait -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 16 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_completion_wait -> dma_memory_write
+
+path 17 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_devtab_entry -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 18 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_pages -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 19 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> iommu_inval_iotlb -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 20 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_inttable -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 21 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_prefetch_pages -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 22 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_complete_ppr -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 23 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_all -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 24 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 25 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_log_command_error -> amdvi_log_event -> dma_memory_write
+
+path 26 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_completion_wait -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 27 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_completion_wait -> dma_memory_write
+
+path 28 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_devtab_entry -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 29 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_pages -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 30 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> iommu_inval_iotlb -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 31 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_inttable -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 32 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_prefetch_pages -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 33 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_complete_ppr -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 34 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_all -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 35 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 36 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_log_command_error -> amdvi_log_event -> dma_memory_write
+
+path 37 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_completion_wait -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 38 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_completion_wait -> dma_memory_write
+
+path 39 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_devtab_entry -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 40 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_pages -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 41 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> iommu_inval_iotlb -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 42 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_inttable -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 43 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_prefetch_pages -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 44 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_complete_ppr -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 45 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_inval_all -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 46 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> amdvi_log_illegalcom_error -> amdvi_log_event -> dma_memory_write
+
+path 47 ：
+amdvi_mmio_write -> amdvi_handle_control_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> dma_memory_read
+
+path 48 ：
+amdvi_mmio_write -> amdvi_handle_cmdhead_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> dma_memory_read
+
+path 49 ：
+amdvi_mmio_write -> amdvi_handle_cmdtail_write -> amdvi_cmdbuf_run -> amdvi_cmdbuf_exec -> dma_memory_read
+
+path 50 ：
+vtd_mem_ir_fault_write -> vtd_report_ir_illegal_access -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 51 ：
+vtd_mem_ir_fault_write -> vtd_report_ir_illegal_access -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 52 ：
+vtd_mem_ir_fault_write -> vtd_report_ir_illegal_access -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 53 ：
+vtd_mem_ir_fault_write -> vtd_report_ir_illegal_access -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 54 ：
+vtd_mem_ir_fault_write -> vtd_report_ir_illegal_access -> vtd_ce_get_pasid_fpd -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 55 ：
+vtd_mem_ir_fault_write -> vtd_report_ir_illegal_access -> vtd_ce_get_pasid_fpd -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 56 ：
+vtd_mem_ir_write -> vtd_interrupt_remap_msi -> vtd_remap_irq_get -> vtd_irte_get -> dma_memory_read
+
+path 57 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_wait_desc -> dma_memory_write
+
+path 58 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_wait_desc -> dma_memory_write
+
+path 59 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_te -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 60 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_te -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 61 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_te -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 62 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_te -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 63 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_te -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 64 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_te -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 65 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_srtp -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 66 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_srtp -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 67 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_srtp -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 68 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_srtp -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 69 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_srtp -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 70 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_srtp -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 71 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_get_inv_desc -> dma_memory_read
+
+path 72 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 73 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 74 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 75 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 76 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 77 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 78 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 79 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 80 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 81 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 82 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 83 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 84 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 85 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 86 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 87 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 88 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 89 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 90 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 91 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 92 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 93 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 94 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 95 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 96 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 97 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 98 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 99 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 100 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 101 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 102 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 103 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 104 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 105 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 106 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 107 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 108 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 109 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 110 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 111 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 112 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 113 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 114 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 115 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 116 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 117 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 118 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 119 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 120 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 121 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 122 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 123 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 124 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 125 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 126 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 127 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 128 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 129 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 130 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 131 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 132 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 133 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 134 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 135 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 136 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 137 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 138 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 139 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 140 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 141 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 142 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 143 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 144 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 145 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 146 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 147 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 148 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 149 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 150 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 151 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 152 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 153 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 154 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 155 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 156 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 157 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 158 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 159 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 160 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 161 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 162 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 163 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 164 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 165 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 166 ：
+vtd_mem_write -> vtd_handle_gcmd_write -> vtd_handle_gcmd_qie -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 167 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 168 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 169 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 170 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 171 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 172 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 173 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 174 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 175 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 176 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 177 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 178 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 179 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 180 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 181 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 182 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 183 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 184 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 185 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 186 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 187 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 188 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 189 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 190 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 191 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 192 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 193 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 194 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 195 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 196 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 197 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 198 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 199 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 200 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 201 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 202 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 203 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 204 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 205 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 206 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 207 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 208 ：
+vtd_mem_write -> vtd_handle_ccmd_write -> vtd_context_cache_invalidate -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 209 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 210 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 211 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 212 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 213 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 214 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 215 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 216 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 217 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 218 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 219 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 220 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 221 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 222 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 223 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 224 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 225 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 226 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 227 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 228 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 229 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 230 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 231 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 232 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 233 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 234 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 235 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 236 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 237 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 238 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 239 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 240 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 241 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 242 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 243 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 244 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 245 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 246 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 247 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 248 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 249 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 250 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 251 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 252 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 253 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 254 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 255 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 256 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 257 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 258 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 259 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 260 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 261 ：
+vtd_mem_write -> vtd_handle_iotlb_write -> vtd_iotlb_flush -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 262 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_get_inv_desc -> dma_memory_read
+
+path 263 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 264 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 265 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 266 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 267 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 268 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_address_space_refresh_all -> vtd_switch_address_space_all -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 269 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 270 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 271 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 272 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 273 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 274 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 275 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 276 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 277 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 278 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 279 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 280 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 281 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 282 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 283 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 284 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 285 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 286 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 287 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 288 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 289 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_switch_address_space -> vtd_as_pt_enabled -> vtd_dev_pt_enabled -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 290 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 291 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 292 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 293 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 294 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 295 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 296 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 297 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 298 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 299 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 300 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 301 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 302 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 303 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 304 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_context_cache_desc -> vtd_context_device_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 305 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 306 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 307 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 308 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 309 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 310 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 311 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 312 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 313 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 314 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 315 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 316 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 317 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 318 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 319 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_global_invalidate -> vtd_iommu_replay_all -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 320 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 321 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 322 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 323 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 324 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 325 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 326 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 327 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 328 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 329 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 330 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 331 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 332 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 333 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 334 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 335 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 336 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 337 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 338 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 339 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 340 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_domain_invalidate -> vtd_address_space_sync -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 341 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_get_root_entry -> dma_memory_read
+
+path 342 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_get_context_entry_from_root -> dma_memory_read
+
+path 343 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 344 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_dev_to_context_entry -> vtd_ce_rid2pasid_check -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 345 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 346 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 347 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 348 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_get_domain_id -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 349 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 350 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_pgtbl_base -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 351 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 352 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_get_iova_level -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 353 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 354 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_range_check -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 355 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pdire_from_pdir_table -> dma_memory_read
+
+path 356 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_iova_limit -> vtd_get_iova_agaw -> vtd_ce_get_rid2pasid_entry -> vtd_get_pe_from_pasid_table -> vtd_get_pe_from_pdire -> vtd_get_pe_in_pasid_leaf_table -> dma_memory_read
+
+path 357 ：
+vtd_mem_write -> vtd_handle_iqt_write -> vtd_fetch_inv_desc -> vtd_process_inv_desc -> vtd_process_iotlb_desc -> vtd_iotlb_page_invalidate -> vtd_iotlb_page_invalidate_notify -> vtd_sync_shadow_page_table_range -> vtd_page_walk -> vtd_page_walk_level -> vtd_get_slpte -> dma_memory_read
+
+path 358 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_map_clb_address -> map_page -> dma_memory_map
+
+path 359 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_map_fis_address -> map_page -> dma_memory_map
+
+path 360 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> ahci_populate_sglist -> dma_memory_map
+
+path 361 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_map
+
+path 362 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_memory_map
+
+path 363 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> dma_memory_map
+
+path 364 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_unmap_clb_address -> dma_memory_unmap
+
+path 365 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_map_clb_address -> map_page -> dma_memory_unmap
+
+path 366 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_unmap_fis_address -> dma_memory_unmap
+
+path 367 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_map_fis_address -> map_page -> dma_memory_unmap
+
+path 368 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> ahci_populate_sglist -> dma_memory_unmap
+
+path 369 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_complete -> dma_blk_unmap -> dma_memory_unmap
+
+path 370 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_blk_unmap -> dma_memory_unmap
+
+path 371 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_unmap
+
+path 372 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_complete -> dma_blk_unmap -> dma_memory_unmap
+
+path 373 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_blk_unmap -> dma_memory_unmap
+
+path 374 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_memory_unmap
+
+path 375 ：
+ahci_idp_write -> ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> dma_memory_unmap
+
+path 376 ：
+ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_map_clb_address -> map_page -> dma_memory_map
+
+path 377 ：
+ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_map_fis_address -> map_page -> dma_memory_map
+
+path 378 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> ahci_populate_sglist -> dma_memory_map
+
+path 379 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_map
+
+path 380 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_memory_map
+
+path 381 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> dma_memory_map
+
+path 382 ：
+ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_unmap_clb_address -> dma_memory_unmap
+
+path 383 ：
+ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_map_clb_address -> map_page -> dma_memory_unmap
+
+path 384 ：
+ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_unmap_fis_address -> dma_memory_unmap
+
+path 385 ：
+ahci_mem_write -> ahci_port_write -> ahci_cond_start_engines -> ahci_map_fis_address -> map_page -> dma_memory_unmap
+
+path 386 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> ahci_populate_sglist -> dma_memory_unmap
+
+path 387 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_complete -> dma_blk_unmap -> dma_memory_unmap
+
+path 388 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_blk_unmap -> dma_memory_unmap
+
+path 389 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_unmap
+
+path 390 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_complete -> dma_blk_unmap -> dma_memory_unmap
+
+path 391 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_blk_unmap -> dma_memory_unmap
+
+path 392 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_memory_unmap
+
+path 393 ：
+ahci_mem_write -> ahci_port_write -> check_cmd -> handle_cmd -> dma_memory_unmap
+
+path 394 ：
+pnv_xive_xscom_write -> pnv_xive_ic_reg_write -> pnv_xive_end_update -> pnv_xive_vst_write -> pnv_xive_vst_addr -> pnv_xive_vst_addr_indirect -> ldq_be_dma -> dma_memory_read
+
+path 395 ：
+pnv_xive_xscom_write -> pnv_xive_ic_reg_write -> pnv_xive_nvt_update -> pnv_xive_vst_write -> pnv_xive_vst_addr -> pnv_xive_vst_addr_indirect -> ldq_be_dma -> dma_memory_read
+
+path 396 ：
+pnv_xive_ic_reg_write -> pnv_xive_end_update -> pnv_xive_vst_write -> pnv_xive_vst_addr -> pnv_xive_vst_addr_indirect -> ldq_be_dma -> dma_memory_read
+
+path 397 ：
+pnv_xive_ic_reg_write -> pnv_xive_nvt_update -> pnv_xive_vst_write -> pnv_xive_vst_addr -> pnv_xive_vst_addr_indirect -> ldq_be_dma -> dma_memory_read
+
+path 398 ：
+pnv_xive_ic_notify_write -> pnv_xive_ic_hw_trigger -> pnv_xive_end_notify -> xive_router_end_notify -> xive_end_enqueue -> dma_memory_write
+
+path 399 ：
+pnv_xive2_ic_notify_write -> pnv_xive2_ic_hw_trigger -> xive2_router_notify -> xive2_router_end_notify -> xive2_end_enqueue -> dma_memory_write
+
+path 400 ：
+pnv_xive2_xscom_write -> pnv_xive2_ic_vc_write -> pnv_xive2_end_update -> pnv_xive2_vst_write -> pnv_xive2_vst_addr -> pnv_xive2_vst_addr_indirect -> ldq_be_dma -> dma_memory_read
+
+path 401 ：
+pnv_xive2_xscom_write -> pnv_xive2_ic_pc_write -> pnv_xive2_nvp_update -> pnv_xive2_vst_write -> pnv_xive2_vst_addr -> pnv_xive2_vst_addr_indirect -> ldq_be_dma -> dma_memory_read
+
+path 402 ：
+pnv_xive2_ic_vc_write -> pnv_xive2_end_update -> pnv_xive2_vst_write -> pnv_xive2_vst_addr -> pnv_xive2_vst_addr_indirect -> ldq_be_dma -> dma_memory_read
+
+path 403 ：
+pnv_xive2_ic_pc_write -> pnv_xive2_nvp_update -> pnv_xive2_vst_write -> pnv_xive2_vst_addr -> pnv_xive2_vst_addr_indirect -> ldq_be_dma -> dma_memory_read
+
+path 404 ：
+bcm2835_property_write -> bcm2835_property_mbox_push -> dma_memory_write
+
+path 405 ：
+dbdma_write -> dbdma_cmdptr_load -> dma_memory_read
+
+path 406 ：
+allwinner_sun8i_emac_write -> allwinner_sun8i_emac_transmit -> allwinner_sun8i_emac_flush_desc -> dma_memory_write
+
+path 407 ：
+allwinner_sun8i_emac_write -> allwinner_sun8i_emac_can_receive -> allwinner_sun8i_emac_rx_desc -> allwinner_sun8i_emac_find_desc -> allwinner_sun8i_emac_get_desc -> dma_memory_read
+
+path 408 ：
+allwinner_sun8i_emac_write -> allwinner_sun8i_emac_transmit -> allwinner_sun8i_emac_tx_desc -> allwinner_sun8i_emac_get_desc -> dma_memory_read
+
+path 409 ：
+allwinner_sun8i_emac_write -> allwinner_sun8i_emac_transmit -> allwinner_sun8i_emac_next_desc -> allwinner_sun8i_emac_get_desc -> dma_memory_read
+
+path 410 ：
+allwinner_sun8i_emac_write -> allwinner_sun8i_emac_transmit -> dma_memory_read
+
+path 411 ：
+eepro100_write -> eepro100_write1 -> eepro100_write_command -> eepro100_cu_command -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 412 ：
+eepro100_write -> eepro100_write1 -> eepro100_write_command -> eepro100_cu_command -> action_command -> stw_le_pci_dma -> stw_le_dma -> dma_memory_write
+
+path 413 ：
+eepro100_write -> eepro100_write1 -> eepro100_write_command -> eepro100_cu_command -> dump_statistics -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 414 ：
+eepro100_write -> eepro100_write2 -> eepro100_write1 -> eepro100_write_command -> eepro100_cu_command -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 415 ：
+eepro100_write -> eepro100_write2 -> eepro100_write1 -> eepro100_write_command -> eepro100_cu_command -> action_command -> stw_le_pci_dma -> stw_le_dma -> dma_memory_write
+
+path 416 ：
+eepro100_write -> eepro100_write2 -> eepro100_write1 -> eepro100_write_command -> eepro100_cu_command -> dump_statistics -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 417 ：
+eepro100_write -> eepro100_write2 -> eepro100_write_command -> eepro100_cu_command -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 418 ：
+eepro100_write -> eepro100_write2 -> eepro100_write_command -> eepro100_cu_command -> action_command -> stw_le_pci_dma -> stw_le_dma -> dma_memory_write
+
+path 419 ：
+eepro100_write -> eepro100_write2 -> eepro100_write_command -> eepro100_cu_command -> dump_statistics -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 420 ：
+eepro100_write -> eepro100_write1 -> eepro100_write_command -> eepro100_cu_command -> action_command -> tx_command -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 421 ：
+eepro100_write -> eepro100_write1 -> eepro100_write_command -> eepro100_cu_command -> action_command -> tx_command -> lduw_le_pci_dma -> lduw_le_dma -> dma_memory_read
+
+path 422 ：
+eepro100_write -> eepro100_write2 -> eepro100_write1 -> eepro100_write_command -> eepro100_cu_command -> action_command -> tx_command -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 423 ：
+eepro100_write -> eepro100_write2 -> eepro100_write1 -> eepro100_write_command -> eepro100_cu_command -> action_command -> tx_command -> lduw_le_pci_dma -> lduw_le_dma -> dma_memory_read
+
+path 424 ：
+eepro100_write -> eepro100_write2 -> eepro100_write_command -> eepro100_cu_command -> action_command -> tx_command -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 425 ：
+eepro100_write -> eepro100_write2 -> eepro100_write_command -> eepro100_cu_command -> action_command -> tx_command -> lduw_le_pci_dma -> lduw_le_dma -> dma_memory_read
+
+path 426 ：
+ftgmac100_write -> ftgmac100_do_tx -> ftgmac100_write_bd -> dma_memory_write
+
+path 427 ：
+ftgmac100_write -> ftgmac100_can_receive -> ftgmac100_read_bd -> dma_memory_read
+
+path 428 ：
+ftgmac100_write -> ftgmac100_do_tx -> ftgmac100_read_bd -> dma_memory_read
+
+path 429 ：
+ftgmac100_write -> ftgmac100_do_tx -> dma_memory_read
+
+path 430 ：
+imx_eth_write -> imx_eth_do_tx -> imx_enet_do_tx -> imx_enet_write_bd -> dma_memory_write
+
+path 431 ：
+imx_eth_write -> imx_eth_do_tx -> imx_fec_do_tx -> imx_fec_write_bd -> dma_memory_write
+
+path 432 ：
+imx_eth_write -> imx_eth_enable_rx -> imx_fec_read_bd -> dma_memory_read
+
+path 433 ：
+imx_eth_write -> imx_eth_do_tx -> imx_enet_do_tx -> imx_enet_read_bd -> dma_memory_read
+
+path 434 ：
+imx_eth_write -> imx_eth_do_tx -> imx_enet_do_tx -> dma_memory_read
+
+path 435 ：
+imx_eth_write -> imx_eth_do_tx -> imx_fec_do_tx -> imx_fec_read_bd -> dma_memory_read
+
+path 436 ：
+imx_eth_write -> imx_eth_do_tx -> imx_fec_do_tx -> dma_memory_read
+
+path 437 ：
+mv88w8618_eth_write -> eth_send -> eth_tx_desc_put -> dma_memory_write
+
+path 438 ：
+mv88w8618_eth_write -> eth_send -> eth_tx_desc_get -> dma_memory_read
+
+path 439 ：
+mv88w8618_eth_write -> eth_send -> dma_memory_read
+
+path 440 ：
+npcm7xx_emc_write -> emc_try_send_next_packet -> emc_set_next_tx_descriptor -> emc_write_tx_desc -> dma_memory_write
+
+path 441 ：
+npcm7xx_emc_write -> emc_try_send_next_packet -> emc_read_tx_desc -> dma_memory_read
+
+path 442 ：
+npcm7xx_emc_write -> emc_try_send_next_packet -> dma_memory_read
+
+path 443 ：
+tulip_write -> tulip_xmit_list_update -> tulip_tx -> tulip_receive -> tulip_desc_write -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 444 ：
+tulip_write -> tulip_xmit_list_update -> tulip_tx -> tulip_receive -> tulip_desc_write -> stl_be_pci_dma -> stl_be_dma -> dma_memory_write
+
+path 445 ：
+tulip_write -> tulip_xmit_list_update -> tulip_desc_write -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 446 ：
+tulip_write -> tulip_xmit_list_update -> tulip_desc_write -> stl_be_pci_dma -> stl_be_dma -> dma_memory_write
+
+path 447 ：
+tulip_write -> tulip_xmit_list_update -> tulip_desc_read -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 448 ：
+tulip_write -> tulip_xmit_list_update -> tulip_desc_read -> ldl_be_pci_dma -> ldl_be_dma -> dma_memory_read
+
+path 449 ：
+tulip_write -> tulip_xmit_list_update -> tulip_tx -> tulip_receive -> tulip_desc_read -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 450 ：
+tulip_write -> tulip_xmit_list_update -> tulip_tx -> tulip_receive -> tulip_desc_read -> ldl_be_pci_dma -> ldl_be_dma -> dma_memory_read
+
+path 451 ：
+vmxnet3_io_bar0_write -> vmxnet3_process_tx_queue -> net_tx_pkt_add_raw_fragment_pci -> pci_dma_map -> dma_memory_map
+
+path 452 ：
+vmxnet3_io_bar0_write -> vmxnet3_process_tx_queue -> net_tx_pkt_add_raw_fragment_pci -> net_tx_pkt_unmap_frag_pci -> pci_dma_unmap -> dma_memory_unmap
+
+path 453 ：
+nvme_mmio_write -> nvme_process_db -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 454 ：
+fw_cfg_dma_mem_write -> fw_cfg_dma_transfer -> stl_be_dma -> dma_memory_write
+
+path 455 ：
+fw_cfg_dma_mem_write -> fw_cfg_dma_transfer -> dma_memory_write
+
+path 456 ：
+fw_cfg_dma_mem_write -> fw_cfg_dma_transfer -> dma_memory_read
+
+path 457 ：
+pnv_phb3_msi_write -> pnv_phb3_resolve_pe -> dma_memory_read
+
+path 458 ：
+pnv_phb3_msi_write -> pnv_phb3_msi_send -> phb3_msi_read_ive -> dma_memory_read
+
+path 459 ：
+pnv_phb3_reg_write -> pnv_phb3_msi_ffi -> pnv_phb3_msi_send -> phb3_msi_read_ive -> dma_memory_read
+
+path 460 ：
+pnv_pbcq_spci_xscom_write -> pnv_phb3_reg_write -> pnv_phb3_msi_ffi -> pnv_phb3_msi_send -> phb3_msi_read_ive -> dma_memory_read
+
+path 461 ：
+pnv_phb4_msi_write -> pnv_phb4_resolve_pe -> dma_memory_read
+
+path 462 ：
+pvrdma_uar_write -> pvrdma_qp_send -> rdma_backend_post_send -> mad_send -> rdma_pci_dma_map -> pci_dma_map -> dma_memory_map
+
+path 463 ：
+pvrdma_uar_write -> pvrdma_qp_send -> rdma_backend_post_send -> mad_send -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 464 ：
+pvrdma_uar_write -> pvrdma_qp_send -> rdma_backend_post_send -> mad_send -> rdma_pci_dma_map -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 465 ：
+pvrdma_regs_write -> load_dsr -> rdma_pci_dma_map -> pci_dma_map -> dma_memory_map
+
+path 466 ：
+pvrdma_regs_write -> load_dsr -> init_dev_ring -> pvrdma_ring_init -> rdma_pci_dma_map -> pci_dma_map -> dma_memory_map
+
+path 467 ：
+pvrdma_regs_write -> load_dsr -> init_dev_ring -> rdma_pci_dma_map -> pci_dma_map -> dma_memory_map
+
+path 468 ：
+pvrdma_regs_write -> load_dsr -> init_dev_ring -> pvrdma_ring_init -> rdma_pci_dma_map -> pci_dma_map -> dma_memory_map
+
+path 469 ：
+pvrdma_regs_write -> load_dsr -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 470 ：
+pvrdma_regs_write -> load_dsr -> rdma_pci_dma_map -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 471 ：
+pvrdma_regs_write -> load_dsr -> free_dsr -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 472 ：
+pvrdma_regs_write -> load_dsr -> free_dsr -> free_dev_ring -> pvrdma_ring_free -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 473 ：
+pvrdma_regs_write -> load_dsr -> free_dsr -> free_dev_ring -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 474 ：
+pvrdma_regs_write -> load_dsr -> free_dsr -> free_dev_ring -> pvrdma_ring_free -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 475 ：
+pvrdma_regs_write -> load_dsr -> init_dev_ring -> pvrdma_ring_init -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 476 ：
+pvrdma_regs_write -> load_dsr -> init_dev_ring -> pvrdma_ring_init -> rdma_pci_dma_map -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 477 ：
+pvrdma_regs_write -> load_dsr -> init_dev_ring -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 478 ：
+pvrdma_regs_write -> load_dsr -> init_dev_ring -> rdma_pci_dma_map -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 479 ：
+pvrdma_regs_write -> load_dsr -> init_dev_ring -> pvrdma_ring_init -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 480 ：
+pvrdma_regs_write -> load_dsr -> init_dev_ring -> pvrdma_ring_init -> rdma_pci_dma_map -> rdma_pci_dma_unmap -> pci_dma_unmap -> dma_memory_unmap
+
+path 481 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_enqueue_frame -> pci_dma_map -> dma_memory_map
+
+path 482 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_init_firmware -> pci_dma_map -> dma_memory_map
+
+path 483 ：
+megasas_port_write -> megasas_mmio_write -> megasas_soft_reset -> megasas_reset_frames -> megasas_unmap_frame -> pci_dma_unmap -> dma_memory_unmap
+
+path 484 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_enqueue_frame -> megasas_unmap_frame -> pci_dma_unmap -> dma_memory_unmap
+
+path 485 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_init_firmware -> pci_dma_unmap -> dma_memory_unmap
+
+path 486 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_init_firmware -> megasas_reset_frames -> megasas_unmap_frame -> pci_dma_unmap -> dma_memory_unmap
+
+path 487 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_unmap_frame -> pci_dma_unmap -> dma_memory_unmap
+
+path 488 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_frame_set_scsi_status -> stb_pci_dma -> stb_dma -> dma_memory_write
+
+path 489 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_frame_set_cmd_status -> stb_pci_dma -> stb_dma -> dma_memory_write
+
+path 490 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_complete_frame -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 491 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_complete_frame -> stq_le_pci_dma -> stq_le_dma -> dma_memory_write
+
+path 492 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_frame_get_context -> ldq_le_pci_dma -> ldq_le_dma -> dma_memory_read
+
+path 493 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_enqueue_frame -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 494 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_complete_frame -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 495 ：
+megasas_port_write -> megasas_mmio_write -> megasas_handle_frame -> megasas_init_firmware -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 496 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_enqueue_frame -> pci_dma_map -> dma_memory_map
+
+path 497 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_init_firmware -> pci_dma_map -> dma_memory_map
+
+path 498 ：
+megasas_mmio_write -> megasas_soft_reset -> megasas_reset_frames -> megasas_unmap_frame -> pci_dma_unmap -> dma_memory_unmap
+
+path 499 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_enqueue_frame -> megasas_unmap_frame -> pci_dma_unmap -> dma_memory_unmap
+
+path 500 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_init_firmware -> pci_dma_unmap -> dma_memory_unmap
+
+path 501 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_init_firmware -> megasas_reset_frames -> megasas_unmap_frame -> pci_dma_unmap -> dma_memory_unmap
+
+path 502 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_unmap_frame -> pci_dma_unmap -> dma_memory_unmap
+
+path 503 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_frame_set_scsi_status -> stb_pci_dma -> stb_dma -> dma_memory_write
+
+path 504 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_frame_set_cmd_status -> stb_pci_dma -> stb_dma -> dma_memory_write
+
+path 505 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_complete_frame -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 506 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_complete_frame -> stq_le_pci_dma -> stq_le_dma -> dma_memory_write
+
+path 507 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_frame_get_context -> ldq_le_pci_dma -> ldq_le_dma -> dma_memory_read
+
+path 508 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_enqueue_frame -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 509 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_complete_frame -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 510 ：
+megasas_mmio_write -> megasas_handle_frame -> megasas_init_firmware -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 511 ：
+pvscsi_io_write -> pvscsi_process_io -> pvscsi_ring_flush_req -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 512 ：
+pvscsi_io_write -> pvscsi_process_io -> pvscsi_ring_pop_req_descr -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 513 ：
+allwinner_sdhost_write -> allwinner_sdhost_dma -> allwinner_sdhost_process_desc -> write_descriptor -> dma_memory_write
+
+path 514 ：
+allwinner_sdhost_write -> allwinner_sdhost_dma -> allwinner_sdhost_process_desc -> dma_memory_write
+
+path 515 ：
+allwinner_sdhost_write -> allwinner_sdhost_dma -> allwinner_sdhost_process_desc -> read_descriptor -> dma_memory_read
+
+path 516 ：
+allwinner_sdhost_write -> allwinner_sdhost_dma -> allwinner_sdhost_process_desc -> dma_memory_read
+
+path 517 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_write
+
+path 518 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_write
+
+path 519 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_write
+
+path 520 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_sdma_transfer_multi_blocks -> dma_memory_write
+
+path 521 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_sdma_transfer_single_block -> dma_memory_write
+
+path 522 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_write
+
+path 523 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_write
+
+path 524 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_write
+
+path 525 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_read
+
+path 526 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_read
+
+path 527 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_do_adma -> get_adma_description -> dma_memory_read
+
+path 528 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_read
+
+path 529 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_sdma_transfer_multi_blocks -> dma_memory_read
+
+path 530 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_sdma_transfer_single_block -> dma_memory_read
+
+path 531 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_read
+
+path 532 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_read
+
+path 533 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_do_adma -> get_adma_description -> dma_memory_read
+
+path 534 ：
+sdhci_s3c_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_read
+
+path 535 ：
+sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_write
+
+path 536 ：
+sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_write
+
+path 537 ：
+sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_write
+
+path 538 ：
+sdhci_write -> sdhci_sdma_transfer_multi_blocks -> dma_memory_write
+
+path 539 ：
+sdhci_write -> sdhci_sdma_transfer_single_block -> dma_memory_write
+
+path 540 ：
+sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_write
+
+path 541 ：
+sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_write
+
+path 542 ：
+sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_write
+
+path 543 ：
+sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_read
+
+path 544 ：
+sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_read
+
+path 545 ：
+sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_do_adma -> get_adma_description -> dma_memory_read
+
+path 546 ：
+sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_read
+
+path 547 ：
+sdhci_write -> sdhci_sdma_transfer_multi_blocks -> dma_memory_read
+
+path 548 ：
+sdhci_write -> sdhci_sdma_transfer_single_block -> dma_memory_read
+
+path 549 ：
+sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_read
+
+path 550 ：
+sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_read
+
+path 551 ：
+sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_do_adma -> get_adma_description -> dma_memory_read
+
+path 552 ：
+sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_read
+
+path 553 ：
+usdhc_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_write
+
+path 554 ：
+usdhc_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_write
+
+path 555 ：
+usdhc_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_write
+
+path 556 ：
+usdhc_write -> sdhci_write -> sdhci_sdma_transfer_multi_blocks -> dma_memory_write
+
+path 557 ：
+usdhc_write -> sdhci_write -> sdhci_sdma_transfer_single_block -> dma_memory_write
+
+path 558 ：
+usdhc_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_write
+
+path 559 ：
+usdhc_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_write
+
+path 560 ：
+usdhc_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_write
+
+path 561 ：
+usdhc_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_read
+
+path 562 ：
+usdhc_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_read
+
+path 563 ：
+usdhc_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_do_adma -> get_adma_description -> dma_memory_read
+
+path 564 ：
+usdhc_write -> sdhci_write -> sdhci_resume_pending_transfer -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_read
+
+path 565 ：
+usdhc_write -> sdhci_write -> sdhci_sdma_transfer_multi_blocks -> dma_memory_read
+
+path 566 ：
+usdhc_write -> sdhci_write -> sdhci_sdma_transfer_single_block -> dma_memory_read
+
+path 567 ：
+usdhc_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_read
+
+path 568 ：
+usdhc_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_read
+
+path 569 ：
+usdhc_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_do_adma -> get_adma_description -> dma_memory_read
+
+path 570 ：
+usdhc_write -> sdhci_write -> sdhci_send_command -> sdhci_data_transfer -> sdhci_do_adma -> dma_memory_read
+
+path 571 ：
+dwc2_hsotg_write -> dwc2_hreg1_write -> dwc2_enable_chan -> dwc2_handle_packet -> dma_memory_write
+
+path 572 ：
+dwc2_hsotg_write -> dwc2_hreg1_write -> dwc2_enable_chan -> dwc2_handle_packet -> dma_memory_read
+
+path 573 ：
+ehci_opreg_write -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 574 ：
+ehci_opreg_write -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 575 ：
+ehci_opreg_write -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 576 ：
+ehci_opreg_write -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 577 ：
+ehci_opreg_write -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 578 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_setup_packet -> usb_packet_map -> dma_memory_map
+
+path 579 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_setup_packet -> usb_packet_map -> dma_memory_map
+
+path 580 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_setup_packet -> usb_packet_map -> dma_memory_map
+
+path 581 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_try_complete_packet -> xhci_xfer_unmap -> usb_packet_unmap -> dma_memory_unmap
+
+path 582 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_setup_packet -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 583 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_xfer_unmap -> usb_packet_unmap -> dma_memory_unmap
+
+path 584 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_try_complete_packet -> xhci_xfer_unmap -> usb_packet_unmap -> dma_memory_unmap
+
+path 585 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_setup_packet -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 586 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_try_complete_packet -> xhci_xfer_unmap -> usb_packet_unmap -> dma_memory_unmap
+
+path 587 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_setup_packet -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 588 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_try_complete_packet -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 589 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 590 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 591 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 592 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_try_complete_packet -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 593 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 594 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_try_complete_packet -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 595 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 596 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_disable_slot -> xhci_disable_ep -> xhci_ep_nuke_xfers -> xhci_ep_nuke_one_xfer -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 597 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_disable_slot -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 598 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 599 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_address_slot -> xhci_dma_write_u32s -> dma_memory_write
+
+path 600 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_address_slot -> xhci_enable_ep -> xhci_disable_ep -> xhci_ep_nuke_xfers -> xhci_ep_nuke_one_xfer -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 601 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_address_slot -> xhci_enable_ep -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 602 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_configure_slot -> xhci_disable_ep -> xhci_ep_nuke_xfers -> xhci_ep_nuke_one_xfer -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 603 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_configure_slot -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 604 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_configure_slot -> xhci_dma_write_u32s -> dma_memory_write
+
+path 605 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_configure_slot -> xhci_enable_ep -> xhci_disable_ep -> xhci_ep_nuke_xfers -> xhci_ep_nuke_one_xfer -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 606 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_configure_slot -> xhci_enable_ep -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 607 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_evaluate_slot -> xhci_dma_write_u32s -> dma_memory_write
+
+path 608 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_stop_ep -> xhci_ep_nuke_xfers -> xhci_ep_nuke_one_xfer -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 609 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_stop_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 610 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_reset_ep -> xhci_ep_nuke_xfers -> xhci_ep_nuke_one_xfer -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 611 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_reset_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 612 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_set_ep_dequeue -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 613 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_reset_slot -> xhci_disable_ep -> xhci_ep_nuke_xfers -> xhci_ep_nuke_one_xfer -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 614 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_reset_slot -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 615 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_reset_slot -> xhci_dma_write_u32s -> dma_memory_write
+
+path 616 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_get_port_bandwidth -> stb_dma -> dma_memory_write
+
+path 617 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 618 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_find_stream -> xhci_dma_read_u32s -> dma_memory_read
+
+path 619 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_ring_fetch -> dma_memory_read
+
+path 620 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 621 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_find_stream -> xhci_dma_read_u32s -> dma_memory_read
+
+path 622 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_ring_chain_length -> dma_memory_read
+
+path 623 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 624 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_find_stream -> xhci_dma_read_u32s -> dma_memory_read
+
+path 625 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 626 ：
+xhci_doorbell_write -> xhci_kick_ep -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_find_stream -> xhci_dma_read_u32s -> dma_memory_read
+
+path 627 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_disable_slot -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 628 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_ring_fetch -> dma_memory_read
+
+path 629 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_address_slot -> ldq_le_dma -> dma_memory_read
+
+path 630 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_address_slot -> xhci_dma_read_u32s -> dma_memory_read
+
+path 631 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_address_slot -> xhci_enable_ep -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 632 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_configure_slot -> xhci_dma_read_u32s -> dma_memory_read
+
+path 633 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_configure_slot -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 634 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_configure_slot -> xhci_enable_ep -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 635 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_evaluate_slot -> xhci_dma_read_u32s -> dma_memory_read
+
+path 636 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_stop_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 637 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_reset_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 638 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_set_ep_dequeue -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 639 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_set_ep_dequeue -> xhci_find_stream -> xhci_dma_read_u32s -> dma_memory_read
+
+path 640 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_reset_slot -> xhci_dma_read_u32s -> dma_memory_read
+
+path 641 ：
+xhci_doorbell_write -> xhci_process_commands -> xhci_reset_slot -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 642 ：
+xhci_runtime_write -> xhci_er_reset -> dma_memory_read
+
+path 643 ：
+xhci_oper_write -> xhci_reset -> xhci_disable_slot -> xhci_disable_ep -> xhci_ep_nuke_xfers -> xhci_ep_nuke_one_xfer -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 644 ：
+xhci_oper_write -> xhci_reset -> xhci_disable_slot -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 645 ：
+xhci_oper_write -> xhci_reset -> xhci_port_update -> xhci_port_notify -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 646 ：
+xhci_oper_write -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 647 ：
+xhci_oper_write -> xhci_reset -> xhci_disable_slot -> xhci_disable_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 648 ：
+xhci_port_write -> xhci_port_notify -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 649 ：
+xhci_port_write -> xhci_port_reset -> xhci_port_notify -> xhci_event -> xhci_write_event -> dma_memory_write
+

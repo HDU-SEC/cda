@@ -1,0 +1,765 @@
+path 0 ：
+flush_queued_data_bh -> flush_queued_data -> do_flush_queued_data -> virtqueue_pop -> virtqueue_packed_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 1 ：
+flush_queued_data_bh -> flush_queued_data -> do_flush_queued_data -> virtqueue_pop -> virtqueue_split_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 2 ：
+flush_queued_data_bh -> flush_queued_data -> do_flush_queued_data -> virtqueue_push -> virtqueue_fill -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 3 ：
+virtio_serial_post_load_timer_cb -> send_control_event -> send_control_msg -> virtqueue_pop -> virtqueue_packed_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 4 ：
+virtio_serial_post_load_timer_cb -> send_control_event -> send_control_msg -> virtqueue_pop -> virtqueue_split_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 5 ：
+virtio_serial_post_load_timer_cb -> send_control_event -> send_control_msg -> virtqueue_push -> virtqueue_fill -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 6 ：
+virtio_gpu_reset_bh -> virtio_gpu_resource_destroy -> virtio_gpu_cleanup_mapping -> virtio_gpu_cleanup_mapping_iov -> dma_memory_unmap
+
+path 7 ：
+virtio_gpu_cursor_bh -> virtio_gpu_handle_cursor -> virtqueue_pop -> virtqueue_packed_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 8 ：
+virtio_gpu_cursor_bh -> virtio_gpu_handle_cursor -> virtqueue_pop -> virtqueue_split_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 9 ：
+virtio_gpu_cursor_bh -> virtio_gpu_handle_cursor -> virtqueue_push -> virtqueue_fill -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 10 ：
+pl330_exec_cycle_timer -> pl330_exec -> pl330_exec_channel -> pl330_exec_cycle -> dma_memory_write
+
+path 11 ：
+pl330_exec_cycle_timer -> pl330_exec -> pl330_exec_channel -> pl330_exec_cycle -> pl330_chan_exec -> pl330_fetch_insn -> dma_memory_read
+
+path 12 ：
+pl330_exec_cycle_timer -> pl330_exec -> pl330_exec_channel -> pl330_exec_cycle -> pl330_chan_exec -> pl330_exec_insn -> dma_memory_read
+
+path 13 ：
+pl330_exec_cycle_timer -> pl330_exec -> pl330_exec_channel -> pl330_exec_cycle -> dma_memory_read
+
+path 14 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> ahci_populate_sglist -> dma_memory_map
+
+path 15 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_map
+
+path 16 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_memory_map
+
+path 17 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> dma_memory_map
+
+path 18 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> ahci_populate_sglist -> dma_memory_unmap
+
+path 19 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_complete -> dma_blk_unmap -> dma_memory_unmap
+
+path 20 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_blk_unmap -> dma_memory_unmap
+
+path 21 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_unmap
+
+path 22 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_complete -> dma_blk_unmap -> dma_memory_unmap
+
+path 23 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_blk_unmap -> dma_memory_unmap
+
+path 24 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> handle_reg_h2d_fis -> process_ncq_command -> execute_ncq_command -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_memory_unmap
+
+path 25 ：
+ahci_check_cmd_bh -> check_cmd -> handle_cmd -> dma_memory_unmap
+
+path 26 ：
+DBDMA_run_bh -> DBDMA_run -> channel_run -> nop -> dbdma_cmdptr_save -> dma_memory_write
+
+path 27 ：
+DBDMA_run_bh -> DBDMA_run -> channel_run -> load_word -> dbdma_cmdptr_save -> dma_memory_write
+
+path 28 ：
+DBDMA_run_bh -> DBDMA_run -> channel_run -> store_word -> dbdma_cmdptr_save -> dma_memory_write
+
+path 29 ：
+DBDMA_run_bh -> DBDMA_run -> channel_run -> store_word -> dma_memory_write
+
+path 30 ：
+DBDMA_run_bh -> DBDMA_run -> channel_run -> nop -> conditional_branch -> next -> dbdma_cmdptr_load -> dma_memory_read
+
+path 31 ：
+DBDMA_run_bh -> DBDMA_run -> channel_run -> nop -> conditional_branch -> branch -> dbdma_cmdptr_load -> dma_memory_read
+
+path 32 ：
+DBDMA_run_bh -> DBDMA_run -> channel_run -> load_word -> next -> dbdma_cmdptr_load -> dma_memory_read
+
+path 33 ：
+DBDMA_run_bh -> DBDMA_run -> channel_run -> load_word -> dma_memory_read
+
+path 34 ：
+DBDMA_run_bh -> DBDMA_run -> channel_run -> store_word -> next -> dbdma_cmdptr_load -> dma_memory_read
+
+path 35 ：
+virtio_net_tx_timer -> virtio_net_flush_tx -> virtqueue_pop -> virtqueue_packed_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 36 ：
+virtio_net_tx_timer -> virtio_net_flush_tx -> virtqueue_pop -> virtqueue_split_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 37 ：
+virtio_net_tx_timer -> virtio_net_flush_tx -> virtqueue_detach_element -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 38 ：
+virtio_net_tx_timer -> virtio_net_flush_tx -> virtqueue_push -> virtqueue_fill -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 39 ：
+virtio_net_tx_bh -> virtio_net_flush_tx -> virtqueue_pop -> virtqueue_packed_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 40 ：
+virtio_net_tx_bh -> virtio_net_flush_tx -> virtqueue_pop -> virtqueue_split_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 41 ：
+virtio_net_tx_bh -> virtio_net_flush_tx -> virtqueue_detach_element -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 42 ：
+virtio_net_tx_bh -> virtio_net_flush_tx -> virtqueue_push -> virtqueue_fill -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 43 ：
+virtio_net_rsc_purge -> virtio_net_rsc_drain_seg -> virtio_net_do_receive -> virtio_net_receive_rcu -> virtqueue_pop -> virtqueue_packed_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 44 ：
+virtio_net_rsc_purge -> virtio_net_rsc_drain_seg -> virtio_net_do_receive -> virtio_net_receive_rcu -> virtqueue_pop -> virtqueue_split_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 45 ：
+virtio_net_rsc_purge -> virtio_net_rsc_drain_seg -> virtio_net_do_receive -> virtio_net_receive_rcu -> virtqueue_detach_element -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 46 ：
+virtio_net_rsc_purge -> virtio_net_rsc_drain_seg -> virtio_net_do_receive -> virtio_net_receive_rcu -> virtqueue_fill -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 47 ：
+virtio_net_rsc_purge -> virtio_net_rsc_drain_seg -> virtio_net_do_receive -> virtio_net_receive_rcu -> virtqueue_unpop -> virtqueue_detach_element -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 48 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_write_zeroes -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_map
+
+path 49 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_zone_append -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_map
+
+path 50 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_write -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_map
+
+path 51 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_read -> nvme_blk_read -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_memory_map
+
+path 52 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_write_zeroes -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_complete -> dma_blk_unmap -> dma_memory_unmap
+
+path 53 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_write_zeroes -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_blk_unmap -> dma_memory_unmap
+
+path 54 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_write_zeroes -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_unmap
+
+path 55 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_zone_append -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_complete -> dma_blk_unmap -> dma_memory_unmap
+
+path 56 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_zone_append -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_blk_unmap -> dma_memory_unmap
+
+path 57 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_zone_append -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_unmap
+
+path 58 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_write -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_complete -> dma_blk_unmap -> dma_memory_unmap
+
+path 59 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_write -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_blk_unmap -> dma_memory_unmap
+
+path 60 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_write -> nvme_do_write -> nvme_blk_write -> dma_blk_write -> dma_blk_io -> dma_blk_cb -> dma_memory_unmap
+
+path 61 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_read -> nvme_blk_read -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_complete -> dma_blk_unmap -> dma_memory_unmap
+
+path 62 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_read -> nvme_blk_read -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_blk_unmap -> dma_memory_unmap
+
+path 63 ：
+nvme_process_sq -> nvme_io_cmd -> nvme_read -> nvme_blk_read -> dma_blk_read -> dma_blk_io -> dma_blk_cb -> dma_memory_unmap
+
+path 64 ：
+nvme_process_sq -> nvme_admin_cmd -> nvme_del_sq -> nvme_post_cqes -> nvme_update_cq_eventidx -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 65 ：
+nvme_process_sq -> nvme_admin_cmd -> nvme_dbbuf_config -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 66 ：
+nvme_process_sq -> nvme_update_sq_eventidx -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 67 ：
+nvme_process_sq -> nvme_update_sq_tail -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 68 ：
+nvme_process_sq -> nvme_admin_cmd -> nvme_del_sq -> nvme_post_cqes -> nvme_update_cq_head -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 69 ：
+nvme_post_cqes -> nvme_update_cq_eventidx -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 70 ：
+nvme_post_cqes -> nvme_update_cq_head -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 71 ：
+mptsas_fetch_requests -> mptsas_fetch_request -> mptsas_process_scsi_io_request -> mptsas_build_sgl -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 72 ：
+mptsas_fetch_requests -> mptsas_fetch_request -> mptsas_process_scsi_io_request -> mptsas_build_sgl -> mptsas_ld_sg_base -> ldl_le_pci_dma -> ldl_le_dma -> dma_memory_read
+
+path 73 ：
+mptsas_fetch_requests -> mptsas_fetch_request -> mptsas_process_scsi_io_request -> mptsas_build_sgl -> mptsas_ld_sg_base -> ldq_le_pci_dma -> ldq_le_dma -> dma_memory_read
+
+path 74 ：
+virtio_scsi_do_tmf_bh -> virtio_scsi_do_one_tmf_bh -> virtio_scsi_complete_req_from_main_loop -> virtio_scsi_complete_req -> virtqueue_push -> virtqueue_fill -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 75 ：
+pvscsi_process_completion_queue -> pvscsi_ring_flush_cmp -> stl_le_pci_dma -> stl_le_dma -> dma_memory_write
+
+path 76 ：
+sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_write
+
+path 77 ：
+sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_write
+
+path 78 ：
+sdhci_data_transfer -> sdhci_do_adma -> dma_memory_write
+
+path 79 ：
+sdhci_data_transfer -> sdhci_sdma_transfer_multi_blocks -> dma_memory_read
+
+path 80 ：
+sdhci_data_transfer -> sdhci_sdma_transfer_single_block -> dma_memory_read
+
+path 81 ：
+sdhci_data_transfer -> sdhci_do_adma -> get_adma_description -> dma_memory_read
+
+path 82 ：
+sdhci_data_transfer -> sdhci_do_adma -> dma_memory_read
+
+path 83 ：
+dwc2_work_bh -> dwc2_handle_packet -> dma_memory_write
+
+path 84 ：
+dwc2_work_bh -> dwc2_handle_packet -> dma_memory_read
+
+path 85 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchitd -> ehci_process_itd -> usb_packet_map -> dma_memory_map
+
+path 86 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_fill_queue -> ehci_execute -> usb_packet_map -> dma_memory_map
+
+path 87 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_execute -> ehci_execute -> usb_packet_map -> dma_memory_map
+
+path 88 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_execute -> ehci_fill_queue -> ehci_execute -> usb_packet_map -> dma_memory_map
+
+path 89 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchitd -> ehci_process_itd -> usb_packet_map -> dma_memory_map
+
+path 90 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_fill_queue -> ehci_execute -> usb_packet_map -> dma_memory_map
+
+path 91 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_execute -> ehci_execute -> usb_packet_map -> dma_memory_map
+
+path 92 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_execute -> ehci_fill_queue -> ehci_execute -> usb_packet_map -> dma_memory_map
+
+path 93 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 94 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 95 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_queues_rip_unseen -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 96 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_queues_rip_unseen -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 97 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 98 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 99 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_waitlisthead -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 100 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_waitlisthead -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 101 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqh -> ehci_reset_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 102 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqh -> ehci_reset_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 103 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchitd -> ehci_process_itd -> usb_packet_unmap -> dma_memory_unmap
+
+path 104 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchitd -> ehci_process_itd -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 105 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_fill_queue -> ehci_execute -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 106 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 107 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 108 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_execute -> ehci_execute -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 109 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_execute -> ehci_fill_queue -> ehci_execute -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 110 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 111 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_writeback -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 112 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_writeback -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 113 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 114 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 115 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 116 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 117 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_waitlisthead -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 118 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_waitlisthead -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 119 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqh -> ehci_reset_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 120 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqh -> ehci_reset_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 121 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchitd -> ehci_process_itd -> usb_packet_unmap -> dma_memory_unmap
+
+path 122 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchitd -> ehci_process_itd -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 123 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_fill_queue -> ehci_execute -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 124 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 125 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 126 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_execute -> ehci_execute -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 127 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_execute -> ehci_fill_queue -> ehci_execute -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 128 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 129 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_writeback -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 130 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_writeback -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 131 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> usb_packet_unmap -> dma_memory_unmap
+
+path 132 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_execute_complete -> usb_packet_unmap -> dma_memory_unmap
+
+path 133 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 134 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 135 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_queues_rip_unseen -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 136 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_queues_rip_unseen -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 137 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 138 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 139 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_waitlisthead -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 140 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_waitlisthead -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 141 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqh -> ehci_reset_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 142 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqh -> ehci_reset_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 143 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchitd -> put_dwords -> dma_memory_write
+
+path 144 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_qh_do_overlay -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 145 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 146 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 147 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_execute -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 148 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_execute -> ehci_qh_do_overlay -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 149 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 150 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 151 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_writeback -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 152 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 153 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 154 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 155 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 156 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_waitlisthead -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 157 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_waitlisthead -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 158 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqh -> ehci_reset_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 159 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqh -> ehci_reset_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 160 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchitd -> put_dwords -> dma_memory_write
+
+path 161 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_qh_do_overlay -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 162 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 163 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 164 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_execute -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 165 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_execute -> ehci_qh_do_overlay -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 166 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 167 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 168 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_writeback -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 169 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_executing -> ehci_flush_qh -> put_dwords -> dma_memory_write
+
+path 170 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> ehci_state_writeback -> put_dwords -> dma_memory_write
+
+path 171 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 172 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_queues_rip_unseen -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 173 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 174 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_waitlisthead -> get_dwords -> dma_memory_read
+
+path 175 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_waitlisthead -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 176 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqh -> get_dwords -> dma_memory_read
+
+path 177 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqh -> ehci_reset_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 178 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchitd -> get_dwords -> dma_memory_read
+
+path 179 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchsitd -> get_dwords -> dma_memory_read
+
+path 180 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqtd -> get_dwords -> dma_memory_read
+
+path 181 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_fill_queue -> get_dwords -> dma_memory_read
+
+path 182 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 183 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_execute -> ehci_fill_queue -> get_dwords -> dma_memory_read
+
+path 184 ：
+ehci_work_bh -> ehci_advance_async_state -> ehci_advance_state -> ehci_state_writeback -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 185 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 186 ：
+ehci_work_bh -> ehci_advance_periodic_state -> get_dwords -> dma_memory_read
+
+path 187 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_reset -> ehci_queues_rip_all -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 188 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_waitlisthead -> get_dwords -> dma_memory_read
+
+path 189 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_waitlisthead -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 190 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqh -> get_dwords -> dma_memory_read
+
+path 191 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqh -> ehci_reset_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 192 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchitd -> get_dwords -> dma_memory_read
+
+path 193 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchsitd -> get_dwords -> dma_memory_read
+
+path 194 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqtd -> get_dwords -> dma_memory_read
+
+path 195 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_fill_queue -> get_dwords -> dma_memory_read
+
+path 196 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_fetchqtd -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 197 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_execute -> ehci_fill_queue -> get_dwords -> dma_memory_read
+
+path 198 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_advance_state -> ehci_state_writeback -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 199 ：
+ehci_work_bh -> ehci_advance_periodic_state -> ehci_queues_rip_unused -> ehci_free_queue -> ehci_cancel_queue -> ehci_free_packet -> ehci_writeback_async_complete_packet -> get_dwords -> dma_memory_read
+
+path 200 ：
+ohci_frame_boundary -> ohci_process_lists -> ohci_service_ed_list -> ohci_service_td -> ohci_put_td -> put_dwords -> dma_memory_write
+
+path 201 ：
+ohci_frame_boundary -> ohci_process_lists -> ohci_service_ed_list -> ohci_service_iso_td -> ohci_put_iso_td -> put_dwords -> dma_memory_write
+
+path 202 ：
+ohci_frame_boundary -> ohci_process_lists -> ohci_service_ed_list -> ohci_service_iso_td -> ohci_put_iso_td -> put_words -> dma_memory_write
+
+path 203 ：
+ohci_frame_boundary -> ohci_process_lists -> ohci_service_ed_list -> ohci_put_ed -> put_dwords -> dma_memory_write
+
+path 204 ：
+ohci_frame_boundary -> ohci_service_ed_list -> ohci_service_td -> ohci_put_td -> put_dwords -> dma_memory_write
+
+path 205 ：
+ohci_frame_boundary -> ohci_service_ed_list -> ohci_service_iso_td -> ohci_put_iso_td -> put_dwords -> dma_memory_write
+
+path 206 ：
+ohci_frame_boundary -> ohci_service_ed_list -> ohci_service_iso_td -> ohci_put_iso_td -> put_words -> dma_memory_write
+
+path 207 ：
+ohci_frame_boundary -> ohci_service_ed_list -> ohci_put_ed -> put_dwords -> dma_memory_write
+
+path 208 ：
+ohci_frame_boundary -> ohci_put_hcca -> dma_memory_write
+
+path 209 ：
+ohci_frame_boundary -> ohci_process_lists -> ohci_service_ed_list -> ohci_read_ed -> get_dwords -> dma_memory_read
+
+path 210 ：
+ohci_frame_boundary -> ohci_process_lists -> ohci_service_ed_list -> ohci_service_td -> ohci_read_td -> get_dwords -> dma_memory_read
+
+path 211 ：
+ohci_frame_boundary -> ohci_process_lists -> ohci_service_ed_list -> ohci_service_iso_td -> ohci_read_iso_td -> get_dwords -> dma_memory_read
+
+path 212 ：
+ohci_frame_boundary -> ohci_process_lists -> ohci_service_ed_list -> ohci_service_iso_td -> ohci_read_iso_td -> get_words -> dma_memory_read
+
+path 213 ：
+ohci_frame_boundary -> ohci_read_hcca -> dma_memory_read
+
+path 214 ：
+ohci_frame_boundary -> ohci_service_ed_list -> ohci_read_ed -> get_dwords -> dma_memory_read
+
+path 215 ：
+ohci_frame_boundary -> ohci_service_ed_list -> ohci_service_td -> ohci_read_td -> get_dwords -> dma_memory_read
+
+path 216 ：
+ohci_frame_boundary -> ohci_service_ed_list -> ohci_service_iso_td -> ohci_read_iso_td -> get_dwords -> dma_memory_read
+
+path 217 ：
+ohci_frame_boundary -> ohci_service_ed_list -> ohci_service_iso_td -> ohci_read_iso_td -> get_words -> dma_memory_read
+
+path 218 ：
+xhci_mfwrap_timer -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 219 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_setup_packet -> usb_packet_map -> dma_memory_map
+
+path 220 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_setup_packet -> usb_packet_map -> dma_memory_map
+
+path 221 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_setup_packet -> usb_packet_map -> dma_memory_map
+
+path 222 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_try_complete_packet -> xhci_xfer_unmap -> usb_packet_unmap -> dma_memory_unmap
+
+path 223 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_setup_packet -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 224 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_xfer_unmap -> usb_packet_unmap -> dma_memory_unmap
+
+path 225 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_try_complete_packet -> xhci_xfer_unmap -> usb_packet_unmap -> dma_memory_unmap
+
+path 226 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_setup_packet -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 227 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_try_complete_packet -> xhci_xfer_unmap -> usb_packet_unmap -> dma_memory_unmap
+
+path 228 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_setup_packet -> usb_packet_map -> usb_packet_unmap -> dma_memory_unmap
+
+path 229 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_try_complete_packet -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 230 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 231 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 232 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 233 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_try_complete_packet -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 234 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 235 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_try_complete_packet -> xhci_xfer_report -> xhci_event -> xhci_write_event -> dma_memory_write
+
+path 236 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_write_u32s -> dma_memory_write
+
+path 237 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 238 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_find_stream -> xhci_dma_read_u32s -> dma_memory_read
+
+path 239 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_ring_fetch -> dma_memory_read
+
+path 240 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 241 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_find_stream -> xhci_dma_read_u32s -> dma_memory_read
+
+path 242 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_ring_chain_length -> dma_memory_read
+
+path 243 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 244 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_ctl_transfer -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_find_stream -> xhci_dma_read_u32s -> dma_memory_read
+
+path 245 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_set_ep_state -> xhci_dma_read_u32s -> dma_memory_read
+
+path 246 ：
+xhci_ep_kick_timer -> xhci_kick_epctx -> xhci_fire_transfer -> xhci_submit -> xhci_try_complete_packet -> xhci_stall_ep -> xhci_find_stream -> xhci_dma_read_u32s -> dma_memory_read
+
+path 247 ：
+vhost_vsock_common_post_load_timer_cb -> vhost_vsock_common_send_transport_reset -> virtqueue_pop -> virtqueue_packed_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 248 ：
+vhost_vsock_common_post_load_timer_cb -> vhost_vsock_common_send_transport_reset -> virtqueue_pop -> virtqueue_split_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 249 ：
+vhost_vsock_common_post_load_timer_cb -> vhost_vsock_common_send_transport_reset -> virtqueue_detach_element -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 250 ：
+vhost_vsock_common_post_load_timer_cb -> vhost_vsock_common_send_transport_reset -> virtqueue_push -> virtqueue_fill -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 251 ：
+virtio_crypto_dataq_bh -> virtio_crypto_handle_dataq -> virtio_crypto_get_request -> virtqueue_pop -> virtqueue_packed_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 252 ：
+virtio_crypto_dataq_bh -> virtio_crypto_handle_dataq -> virtio_crypto_get_request -> virtqueue_pop -> virtqueue_split_pop -> virtqueue_map_desc -> dma_memory_map
+
+path 253 ：
+virtio_crypto_dataq_bh -> virtio_crypto_handle_dataq -> virtqueue_detach_element -> virtqueue_unmap_sg -> dma_memory_unmap
+
+path 254 ：
+virtio_crypto_dataq_bh -> virtio_crypto_handle_dataq -> virtio_crypto_handle_request -> virtio_crypto_req_complete -> virtqueue_push -> virtqueue_fill -> virtqueue_unmap_sg -> dma_memory_unmap
+
