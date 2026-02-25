@@ -20,7 +20,7 @@ Our artefacts are structured as follows:
 
 
 - **[Gadget Identification](https://github.com/HDU-SEC/cda/tree/main/step1-qemu-codeQLForGadget)**:  
-  CodeQL-based static analysis for discovering cross-domain gadgets, as described in §5 of our paper.
+  CodeQL-based static analysis for discovering cross-domain gadgets.
 
 - **[Gadget Triggering (Fuzzing)](https://github.com/HDU-SEC/cda/tree/main/step2-fuzzforseedfile)**:  
   Fuzzing pipeline for generating inputs that trigger identified cross-domain gadgets.
