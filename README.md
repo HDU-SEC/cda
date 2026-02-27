@@ -27,3 +27,6 @@ Our artefacts are structured as follows:
 
 - **[PoC Reconstruction](https://github.com/HDU-SEC/cda/tree/main/step3-seed2poc)**:  
   GDB-assisted extraction and reconstruction of standalone executable PoCs from fuzz-generated seed files.
+
+- **[Exploit Demos](https://github.com/HDU-SEC/cda/tree/main/exploit)**:  
+  Demonstration exploits for selected vulnerabilities, showcasing end-to-end CDA-based exploitation.
